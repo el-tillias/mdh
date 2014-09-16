@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+if [[ $# -ne 1 ]]; then
+    echo 'Usage: ./run $cfile';
+    exit 0
+fi
+
+gcc -o $1 $1.c -Wall && ./$1 && rm $1
