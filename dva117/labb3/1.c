@@ -2,6 +2,29 @@
 #include <stdlib.h>
 #include <time.h>
 
+int again(void) {
+
+    char again;
+
+    while(1) {
+
+        printf("Play again? (y/n): ");
+        scanf(" %c", &again);
+        if (again == 'y') {
+            return 1;
+        }
+        else if (again == 'n') {
+            return 0;
+        }
+        else {
+            printf("\nAnswer with 'y' or 'n'");
+        }
+    }
+
+    return 0;
+
+}
+
 
 void gen(int *shogun) {
 
@@ -31,13 +54,25 @@ int count(int ask, int *shogun) {
 
 int main(void) {
     int values[10], ask;
-    gen(values);
 
-    printf("Which value should we search for?: ");
-    scanf("%i", &ask);
+    while (1) {
+        gen(values);
+
+        printf("Which value should we search for?: ");
+        scanf("%i", &ask);
     
-    int res = count(ask,values);
-    printf("Number of occurences: %i\n", res);
+        int res = count(ask,values);
+        printf("Number of occurences: %i\n", res);
+    
+        int kallekula = again();
+
+        if (kallekula == 1) {
+            continue;
+        }
+        else if (kallekula == 0) {
+            break;
+        }
+    }
 
     return 0;
 }

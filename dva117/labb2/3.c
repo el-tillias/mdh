@@ -30,7 +30,7 @@ int again(void) {
 int game(void) {
 
     time_t t;
-    int val, ans;
+    int val, ans, tries = 0;
     srand((int) time(&t));
     ans = (rand() % 100);
 
@@ -39,6 +39,7 @@ int game(void) {
         printf("%i", ans);
         printf("\nGuess a number between 1 and 100: ");
         scanf("%i", &val);
+        tries++;
 
         if (ans > val) {
             printf("\nYou are guessing too low, try again.");
@@ -48,6 +49,7 @@ int game(void) {
         }
         else {
             printf("\nCorrect answer!\n");
+            printf("Number of tries: %i\n", tries);
             break;
         }
 
