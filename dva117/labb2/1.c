@@ -3,8 +3,8 @@
 
 int main(void) {
     
-    float avg;
-    int current, low, high;
+    float avg = 0.0;
+    int current, low, high, sum = 0;
     char ans;
     
     while(1) {
@@ -35,6 +35,10 @@ int main(void) {
                     low = current;
                 }
             }
+
+            // calulate sum and average
+            sum = sum + current;
+            avg++;
         }
 
         if (low) {
@@ -45,9 +49,8 @@ int main(void) {
         }
 
         if ((high) && (low)) {
-            printf("The sum off highest and lowest value are: %i\n", (high+low));
-            avg = ((high+low)/2.0);
-            printf("Average of lowest and highest value is: %f\n", avg);
+            printf("The sum off highest and lowest value are: %i\n", sum);
+            printf("Average of lowest and highest value is: %.2f\n", sum/avg);
         }
 
 

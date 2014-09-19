@@ -2,14 +2,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char remove_chars(char *rem) {
+
+    int i;
+    char rmed[50] = {'\0'};
+    for(i=0; rmed[i] != '\0'; i++) {
+        if (rmed[i] == '\s') {
+            continue;
+        }
+        else {
+            rmed[i] = rem[i];
+            printf("Char: %d\n", rmed[i]);
+        }
+    }
+
+    return rmed;
+
+}
+    
+
 
 int main(void) {
 
-    char input[25];
+    char input[25], rmed[50];
     int i, strlength = 0;
 
     printf("Type a word for checking palindrome: ");
     scanf("%s", input);
+
+    rmed = remove_chars(input);
 
     //calculate stringlength of input
     for (i = 0; input[i] != '\0'; i++)
