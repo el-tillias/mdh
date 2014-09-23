@@ -49,8 +49,8 @@ int main(void) {
         }
 
         if ((high) && (low)) {
-            printf("The sum off highest and lowest value are: %i\n", sum);
-            printf("Average of lowest and highest value is: %.2f\n", sum/avg);
+            printf("The sum off all values are: %i\n", sum);
+            printf("Average of all values are: %.2f\n", sum/avg);
         }
 
 

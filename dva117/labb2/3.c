@@ -32,7 +32,7 @@ int game(void) {
     time_t t;
     int val, ans, tries = 0;
     srand((int) time(&t));
-    ans = (rand() % 100);
+    ans = (rand() % 100 + 1);
 
     while (1) {
 
