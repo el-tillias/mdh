@@ -10,10 +10,12 @@ int cmpfunc(const void *a, const void *b)
 
 void print_top(int *sorted, int length)  {
 
-    int i;
+    int i, number, amount;
 
     for (i=0;i<length; i++) {
         printf("apa: %i\n", sorted[i]);
+        
+
 
     }
 
