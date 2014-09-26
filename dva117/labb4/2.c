@@ -13,10 +13,9 @@ void print_top(int *sorted, int length)  {
     int i, z, candidate, new_candidate, occur=0, new_occur=0;
 
     for(i=0; i<length; i++) {
-        new_candidate=sorted[i];
+        if (new_accour
         for(z=0; z<length; z++) {
             if(sorted[z] == new_candidate) {
-                candidate=new_candidate;
                 new_occur++;
     }
 

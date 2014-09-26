@@ -2,9 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-
+#include <locale.h>
 
 int main(void) {
+
+    setlocale(LC_ALL, "");
 
     char input[50] = {'\0'};
     char input_rev[50] = {'\0'};
@@ -15,7 +17,8 @@ int main(void) {
     while ((c = getchar()) != '\n') {
         shogun[x] = c;
 
-        if (c != ' ') {
+        if (c != ' ' && c != ',') {
+            printf("%c\n", c);
             input[strlength] = tolower(c);
             strlength++;
         }
