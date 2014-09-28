@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <string.h>
+#include <unistd.h>
 
 int cmpfunc(const void *a, const void *b)
 {
@@ -10,15 +11,36 @@ int cmpfunc(const void *a, const void *b)
 
 void print_top(int *sorted, int length)  {
 
-    int i, z, candidate, new_candidate, occur=0, new_occur=0;
+    int top, top_occur, i, z, candidate=0, new_candidate=0, occur=0, new_occur=0;
 
-    for(i=0; i<length; i++) {
-        if (new_accour
-        for(z=0; z<length; z++) {
-            if(sorted[z] == new_candidate) {
-                new_occur++;
+    candidate=sorted[0];
+    for (z=0; z<length; z++) {
+        if (candidate == sorted[z]) {
+            occur++;
+        }
     }
 
+    top_occur=occur;
+    top=candidate;
+
+    for (z=0; z<length; z++) {
+        new_candidate = sorted[z];
+        if (new_candidate != candidate && top != new_candidate) {
+            for (i=0; i<length; i++) {
+                if (new_candidate == sorted[i]) {
+                    new_occur++;
+                }
+            }
+        }
+
+        if (new_occur>occur) {
+            top_occur=new_occur;
+            top=new_candidate;
+        }
+        new_occur=0;
+    }
+
+    printf("top number: %i, occurrency: %i\n", top, top_occur);
 }
 
 
@@ -48,15 +70,15 @@ int again(void) {
 
 int main(void) {
 
-    int input[100];
-    int x, z, c, strlength = 0;
-
 
     while (1) {
 
+        int input[100];
+        int z, c, strlength = 0;
+
         printf("Type an integer between 1 and 1000, max 100 integers in each run: ");
 
-        while (scanf("%i", &c)) {
+        while (scanf("%d", &c)) {
 
             if (c < 0 || strlength > 100) {
                 break;
@@ -67,7 +89,6 @@ int main(void) {
 
             else {
                 input[strlength] = c;
-                printf("bajs: %i\n", input[strlength]);
                 strlength++;
             }
 
@@ -77,11 +98,10 @@ int main(void) {
         qsort(input, strlength, sizeof(int), cmpfunc);
         print_top(input, strlength);
 
-
         z = again();
 
         if (z == 1) {
-            memset(input, 0, sizeof(input));
+            //memset(input, 0, sizeof(input));
             continue;
 
         }
