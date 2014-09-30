@@ -10,10 +10,18 @@ void convert(char *input, char *wordpointers) {
     for(i=0; i<strlen(input); i++) {
         //printf("%c\n", input[i]);
         //printf("%c", wordpointers[i]);
+
         if (input[i] == ' ') {
-            wordpointers[z++] = &input[i+1];
+            wordpointers[z++] = &input[i];
         }
     }
+
+    //printf("size: %zu", sizeof(wordpointers));
+
+    for (i=1; i<sizeof(wordpointers); i++) {
+        printf("%c\n", wordpointers[i]);
+    }
+
 }
 
 
