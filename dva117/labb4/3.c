@@ -11,7 +11,8 @@ void convert(char *input, char *wordpointers) {
         //printf("%c\n", input[i]);
         //printf("%c", wordpointers[i]);
         if (input[i] == ' ') {
-            wordpointers[i] = &input[i+1];
+            wordpointers[z] = &input[i+1];
+            z++;
         }
     }
 }
