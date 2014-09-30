@@ -1,44 +1,32 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <stddef.h>
+#include <ctype.h>
 
+void convert(char *input, char *wordpointers) {
 
-int shogun(char *string, char *string_array) {
-
-    int i, nwords = 0;
-    char *strpointer=string;
-
-    for(i=0; i<strlen(string); i++) {
-        if (string[i] == ' ') {
-            strpointer++;
+    int i, z=0;
+    for(i=0; i<strlen(input); i++) {
+        //printf("%c\n", input[i]);
+        //printf("%c", wordpointers[i]);
+        if (input[i] == ' ') {
+            wordpointers[i] = &input[i+1];
         }
-
-        else if (string[i] == '\0') {
-            break;
-        }
-
-        string_array[nwords++] = strpointer;
     }
-
-    return nwords;
 }
+
 
 
 int main(void) {
 
-
-    char w[200];
-    int words, i;
-    char str_array[200] = {'\0'};
+    char input[200];
+    char wordpointers = {'\0'};
 
     printf("Write a word: ");
-    fgets(w, 200, stdin);
+    fgets(input, sizeof(input), stdin);
 
-    words=shogun(w, str_array);
-
-    for(i = 0; i < words; i++) {
-        printf("%s\n", str_array[i]);
-    }
+    convert(input, &wordpointers);
 
     return 0;
     
