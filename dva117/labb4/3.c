@@ -6,20 +6,19 @@
 
 void convert(char *input, char *wordpointers) {
 
-    int i, z=0;
-    for(i=0; i<strlen(input); i++) {
-        //printf("%c\n", input[i]);
-        //printf("%c", wordpointers[i]);
-
+    int i=0, z=0, x=0;
+    wordpointers[z++] = &input[0];
+    for(i=1; i<strlen(input); i++) {
         if (input[i] == ' ') {
-            wordpointers[z++] = &input[i];
+            wordpointers[z++] = &input[i+1];
         }
     }
 
-    //printf("size: %zu", sizeof(wordpointers));
-
-    for (i=1; i<sizeof(wordpointers); i++) {
-        printf("%c\n", wordpointers[i]);
+    for (i=0; i<z; i++) {
+        printf("pointer of %i: %x.", i, &wordpointers[i]);
+        for (z=0; z<strlen(wordpointers); z++) {
+            printf("Contains: %c", wordpointers[z]);
+        }
     }
 
 }
@@ -29,12 +28,12 @@ void convert(char *input, char *wordpointers) {
 int main(void) {
 
     char input[200];
-    char wordpointers = {'\0'};
+    char *wordpointers[300];
 
     printf("Write a word: ");
     fgets(input, sizeof(input), stdin);
 
-    convert(input, &wordpointers);
+    convert(input, wordpointers);
 
     return 0;
     
