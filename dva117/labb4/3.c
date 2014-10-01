@@ -15,9 +15,9 @@ void convert(char *input, char *wordpointers) {
     }
 
     for (i=0; i<z; i++) {
-        printf("pointer of %i: %x.", i, &wordpointers[i]);
+        printf("pointer of %i: %x.\n", i, &wordpointers[i]);
         for (z=0; z<strlen(wordpointers); z++) {
-            printf("Contains: %c", wordpointers[z]);
+            printf("Contains: %c\n", wordpointers[z]);
         }
     }
 
