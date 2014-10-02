@@ -27,7 +27,7 @@ int main(void) {
 
     char input[200];
     char *wordpointers[200];
-    int i, count, z;
+    int i, count;
 
     printf("Write a word: ");
     fgets(input, sizeof(input), stdin);
@@ -42,7 +42,7 @@ int main(void) {
             break;
         }
         else {
-            printf("word: %s\n", wordpointers[z]);
+            printf("word: %s\n", wordpointers[i]);
         }
     }
 
