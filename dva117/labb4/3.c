@@ -4,23 +4,21 @@
 #include <stddef.h>
 #include <ctype.h>
 
-void convert(char *input, char *wordpointers) {
+int convert(char *input, char **wordpointers) {
 
-    int i=0, z=0, x=0;
-    wordpointers[z++] = &input[0];
-    for(i=1; i<strlen(input); i++) {
+    int i=0, z=0, x=1;
+    wordpointers[z++] = &input[i];
+    for(i=0; i<strlen(input); i++) {
         if (input[i] == ' ') {
             wordpointers[z++] = &input[i+1];
+            x++;
+        }
+        else if (input[i] == '\n') {
+            break;
         }
     }
 
-    for (i=0; i<z; i++) {
-        printf("pointer of %i: %x.\n", i, &wordpointers[i]);
-        for (z=0; z<strlen(wordpointers); z++) {
-            printf("Contains: %c\n", wordpointers[z]);
-        }
-    }
-
+    return x;
 }
 
 
@@ -28,12 +26,25 @@ void convert(char *input, char *wordpointers) {
 int main(void) {
 
     char input[200];
-    char *wordpointers[300];
+    char *wordpointers[200];
+    int i, count, z;
 
     printf("Write a word: ");
     fgets(input, sizeof(input), stdin);
 
-    convert(input, wordpointers);
+    count = convert(input, wordpointers);
+
+    for (i=0; i<count; i++) {
+        if (*wordpointers[i] == ' ') {
+            continue;
+        }
+        else if (*wordpointers[i] == '\n') {
+            break;
+        }
+        else {
+            printf("word: %s\n", wordpointers[z]);
+        }
+    }
 
     return 0;
     
