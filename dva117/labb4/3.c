@@ -10,6 +10,7 @@ int convert(char *input, char **wordpointers) {
     wordpointers[z++] = &input[i];
     for(i=0; i<strlen(input); i++) {
         if (input[i] == ' ') {
+            input[i] = '0';
             wordpointers[z++] = &input[i+1];
             x++;
         }
@@ -27,7 +28,7 @@ int main(void) {
 
     char input[200];
     char *wordpointers[200];
-    int i, count;
+    int i, count, z;
 
     printf("Write a word: ");
     fgets(input, sizeof(input), stdin);
@@ -35,18 +36,18 @@ int main(void) {
     count = convert(input, wordpointers);
 
     for (i=0; i<count; i++) {
-        if (*wordpointers[i] == ' ') {
-            continue;
-        }
-        else if (*wordpointers[i] == '\n') {
-            break;
-        }
-        else {
-            printf("word: %s\n", wordpointers[i]);
+        printf("Word %i (ptr: %p): ", i, &wordpointers[i]);
+        for (z=0; z<strlen(wordpointers[i]); z++) {
+            if (wordpointers[i][z] == '0') {
+                printf("\n");
+                break;
+            }
+            else {
+                printf("%c", wordpointers[i][z]);
+            }
         }
     }
 
     return 0;
-    
 
 }
