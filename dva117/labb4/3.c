@@ -9,17 +9,17 @@ int again(void) {
     char again;
 
     while(1) {
-
         printf("Run again? (y/n): ");
-        scanf(" %c", &again);
-        if (again == 'y') {
-            return 1;
-        }
-        else if (again == 'n') {
-            return 0;
-        }
-        else {
-            printf("\nAnswer with 'y' or 'n'");
+        while ((again = getchar()) != '\n' ) {
+            if (again == 'y') {
+                return 1;
+            }
+            else if (again == 'n') {
+                return 0;
+            }
+            else {
+                printf("\nAnswer with 'y' or 'n'");
+            }
         }
     }
 
