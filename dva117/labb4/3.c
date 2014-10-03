@@ -6,25 +6,22 @@
 
 int again(void) {
 
-    char again;
+    char a;
 
-    while(1) {
-        printf("Run again? (y/n): ");
-        while ((again = getchar()) != '\n' ) {
-            if (again == 'y') {
-                return 1;
-            }
-            else if (again == 'n') {
-                return 0;
-            }
-            else {
-                printf("\nAnswer with 'y' or 'n'");
-            }
+    while (1) {
+        printf("Try again? (y/n): ");
+        scanf("%c", &a);
+        if (a == 'y') {
+            return 1;
+        }
+        else if (a == 'n') {
+            return 0;
+        }
+        else {
+            continue;
         }
     }
-
     return 0;
-
 }
 
 
@@ -51,13 +48,15 @@ int convert(char *input, char **wordpointers) {
 
 int main(void) {
 
-    while(1) {
-        char input[200];
-        char *wordpointers[200];
-        int i, count, z, y;
+    char input[200];
+    char bajs;
+    char *wordpointers[200];
+    int i, count, z, y;
 
+
+    while(1) {
         printf("Write a word: ");
-        fgets(input, sizeof(input), stdin);
+        fgets(input, 200, stdin);
 
         count = convert(input, wordpointers);
 
