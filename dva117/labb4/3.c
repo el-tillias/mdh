@@ -49,7 +49,6 @@ int convert(char *input, char **wordpointers) {
 int main(void) {
 
     char input[200];
-    char bajs;
     char *wordpointers[200];
     int i, count, z, y;
 
