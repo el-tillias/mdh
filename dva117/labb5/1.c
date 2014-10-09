@@ -60,6 +60,17 @@ void r_numberof(struct buylist *no, int items) {
     }
 }
 
+void print_shoppinglist(struct buylist *p) {
+
+    int i, z;
+    // this prints the first char in struct->name and everything in struct->unit.
+    // should only print struct->name, and all of it!
+    printf("Product name    Amount    Unit\n");
+    for(i=0; i < 4; i++){
+        printf("%s\n", &(p+i)->name);
+    }
+}
+
 
 
 void r_name(struct buylist *n, int items) {
@@ -90,6 +101,7 @@ int main(void) {
 
         if (items > 4) {
             printf("Maximum number of products reached, printing shopping list and exiting..\n\n");
+            print_shoppinglist(n);
             break;
         }
 
