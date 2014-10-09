@@ -10,8 +10,8 @@
 
 
 struct buylist {
-    char name;
-    char unit;
+    char name[20];
+    char unit[5];
     float numberof;
 };
 
@@ -21,7 +21,9 @@ int check_alpha(char *s) {
     int i;
 
     for (i=0; i<strlen(s); i++) {
-        if (isdigit(s[i]) != 0) { return 2; }
+        if (isdigit(s[i]) != 0) { 
+            return 2; 
+        }
     }
 
     return 1;
@@ -32,19 +34,20 @@ void r_unit(struct buylist *u, int items) {
 
     while (1) {
         printf("Product unit: ");
-        scanf("%s", &(u+items)->unit);
+        scanf("%s", (u+items)->unit);
 
-        char *tocheck = &(u+items)->unit;
+        char *tocheck = (u+items)->unit;
 
         if (check_alpha(tocheck) == 2) {
             printf("Valid units is chars only (e.g. kg, hg). Try again.\n");
         }
-        else { 
+        else {
             break; 
         }
     }
      
 }
+
 
 void r_numberof(struct buylist *no, int items) {
 
@@ -62,12 +65,12 @@ void r_numberof(struct buylist *no, int items) {
 
 void print_shoppinglist(struct buylist *p) {
 
-    int i, z;
+    int i;
     // this prints the first char in struct->name and everything in struct->unit.
     // should only print struct->name, and all of it!
-    printf("Product name    Amount    Unit\n");
-    for(i=0; i < 4; i++){
-        printf("%s\n", &(p+i)->name);
+    printf("Product    Amount        Unit\n");
+    for(i=0; i < 5; i++){
+        printf("%s       %f       %s\n", (p+i)->name, (p+i)->numberof, (p+i)->unit);
     }
 }
 
@@ -77,9 +80,9 @@ void r_name(struct buylist *n, int items) {
     
     while (1) {
         printf("Product name: ");
-        scanf("%s", &(n+items)->name);
+        scanf("%s", (n+items)->name);
 
-        char *tocheck = &(n+items)->name;
+        char *tocheck = (n+items)->name;
 
         if (check_alpha(tocheck) == 2) {
             printf("Valid names of product is chars only (e.g. oranges). Try again.\n");
@@ -95,7 +98,7 @@ void r_name(struct buylist *n, int items) {
 int main(void) {
 
     int items=0;
-    struct buylist n[20];
+    struct buylist n[5];
 
     while (1) {
 
