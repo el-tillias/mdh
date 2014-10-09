@@ -87,9 +87,16 @@ int main(void) {
     struct buylist n[20];
 
     while (1) {
+
+        if (items > 4) {
+            printf("Maximum number of products reached, printing shopping list and exiting..\n\n");
+            break;
+        }
+
         r_name(n, items);
         r_unit(n, items);
         r_numberof(n, items);
+        printf("Next item in shopping list..\n");
         items++;
     }
 
