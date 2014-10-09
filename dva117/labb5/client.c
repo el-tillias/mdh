@@ -4,8 +4,9 @@
 #include <stdio.h>
 #include<string.h>
  
-int main(int argc,char **argv)
-{
+int main(int argc, char *argv[]) {
+
+
     int sockfd,n,i;
     char sendline[100];
     char recvline[100];
@@ -16,9 +17,18 @@ int main(int argc,char **argv)
  
     servaddr.sin_family=AF_INET;
     servaddr.sin_port=htons(22000);
- 
-    inet_pton(AF_INET,"127.0.0.1",&(servaddr.sin_addr));
- 
+
+    if (argc != 2) {
+        printf("Client-Usage: %s serverIP\n", argv[0]);
+        return 0;
+    }
+    
+    if((gethostbyname(argv[1])) == NULL) {
+        perror("gethostbyname()");
+        return 0;
+    }
+
+    inet_pton(AF_INET,argv[1],&(servaddr.sin_addr));
     connect(sockfd,(struct sockaddr *)&servaddr,sizeof(servaddr));
  
     while(1) {
