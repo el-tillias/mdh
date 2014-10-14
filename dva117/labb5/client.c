@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 
         bzero( sendline, 100);
         bzero( recvline, 100);
-        fgets(sendline,100,stdin); /*stdin = 0 , for standard input */
+        fgets(sendline,100,stdin);
 
         write(sockfd,sendline,strlen(sendline)+1);
         read(sockfd,recvline,100);

@@ -35,13 +35,12 @@ int main()
             bzero( str, 100);
             read(comm_fd,str,100);
 
-            for (i=0; i<1; i++) {
-                if (str[i] == '#') {
-                    write(comm_fd, "See you later.\n\n", strlen("See you later.")+1);
-                    close(comm_fd);
-                    bzero( str, 100);
-                    start_new_session = 1;
-                }
+            //for (i=0; i<1; i++) {
+            if (str[0] == '#') {
+                write(comm_fd, "See you later.\n\n", strlen("See you later.")+1);
+                close(comm_fd);
+                bzero( str, 100);
+                start_new_session = 1;
             }
 
             if (start_new_session == 1) {
