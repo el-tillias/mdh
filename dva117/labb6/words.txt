@@ -1,4 +1,77 @@
-kanonkula gimle yggdrasil
-kaka melon banan
-loke thor
-gimle kaka apa
+8 Pedagogiska spörsmål
+
+8.1 Pedagogisk grundsyn
+
+Ämnet pedagogik brukar ofta av lekmän misstas för metodik på samma sätt som astronomi och astrologi.
+"Han är inte pedagogisk" brukar i allmänhet betyda att vederbörande inte är metodisk i sin
+framställning. Detta papper har hittills i huvudsak tagit upp metodik och inte pedagogik eftersom det
+är i allmänhet det som brukar efterfrågas och ge ett snabbt resultat. Däremot så är det inte säkert att
+resultatet blir det önskade och det kan i sin tur bero på en ogenomtänkt eller i sammahanget felaktig
+pedagogik. En implementation kan aldrig bli bättre än specifikationen.
+Pedagogik handlar i grund och botten om fostran till lärandet och människors attityd till lärandet.
+Om läraren anser att människor är lata och olydiga kan dennes metodik att genomföra undervisning
+bli med "tyst-i-klassen" och piska. En lärare som har den pedagogiska framtoningen att studenterna
+kommer bara lära sig genom att själva formulera sig kommer förmodligen prata mycket sparsamt själv
+i undervisningen. Att använda sig av en metodik utan att känna till den bakomliggande pedagogiken
+kan i vissa fall ge ett resultat som man inte räknade med och man förstod inte varför det gick som det
+gick. Välj därför pedagogisk inriktning först och så kommer metodiken nära nog automatiskt.
+Men att välja pedagogik eller bestämma sig för vilken pedagogisk grundsyn man har låter sig inte
+göras i en handvänding. Som allt stort tänkande så tar det tid, men om man tänker sig att arbeta med
+utbildning under några år så måste man ta sig denna tid att fundera och även läsa vad andra har gjort.
+Några bra introducerande lästips för dig som är nybörjare är t.ex.
+
+
+- Pedagogisk Handbok av Grue-Sörensen från Natur och Kultur 1976.
+Boken tar upp grundläggande begrepp inom pedagogiken i bokstavsordning. Det gör att man
+kan börja läsa var som helst i boken. Varje begrepp ges ett par sidor så man får en ganska god
+insikt i vad det hela handlar om utan att det hinner bli tråkigt. Boken ger mest behållning om
+man kan lite pedagogisk historia och dessutom har en god historisk allmänbildning, men kan
+läsas av alla.
+- Den obändiga söklusten av Bodil Jönsson och Karin Rehman från Brombergs förlag 2000.
+Författarinnan Bodil Jönsson är en av Sveriges kändaste och mest lästa fysiker som forskar om
+IT och funktionshinder. Hur datorer och IT kan hjälpa utvecklingstörda eller "lågpresterande
+elever" leder kanske inte tankarna alldeles omedelbart till pedagogik, men denna bok tar upp
+alla de runtomkringsaker som kommunikation, perception, återkoppling, informationssökning,
+och IT som finns i lärprocessen. Boken är lättläst och visar i hög utsträckning att barn-, vuxenoch
+pedagogik för funktionshindrade i grunden inte skiljer sig åt.
+- Om lärande av Marton och Booth, Studentlitteratur 2000.
+Fenomenografi är en kvalitativ metod som författarna utvecklat och presenterat i denna ganska
+tunga bok upplättad med många exempel. Metoden bygger på att man kan utvärdera metodik
+och didaktik genom att intervjua ett mycket begränsat antal elever/studenter och uppnå minst
+lika goda vetenskapliga slutsatser som stora kvantitativa undersökningar. Bra eller blaj —avgör
+själv!
+- Ett oändligt äventyr av Sven-Eric Liedman, Bonniers förlag 2001 Liedman beskriver vad kunskap
+är och hur den formas ur vinklar som de flesta aldrig har tänkt på. Att han även tar upp
+aspekter som biologi, artificiell intelligens, datorstöd i undervisning, politik och inte minst historia
+och samtid gör den mycket intressant. Boken finns i pocketform och kostar en femtilapp.
+Ett stort steg på vägen är att skriva ner sin egen pedagogiska grundsyn vilket i första andetaget
+känns som en omöjlighet om man aldrig tänkt i dessa banor. För att ge en knuff så ges nedan några
+lösryckta exempel;
+"En student kan lära sig vad som helst om de bara får rätt stöd.", "Människan är lat", "Endast
+genom att själv göra saker kan man lära sig hur det egentligen fungerar — learning-by-doing", "Man
+måste lära sig teorin innan man kan praktisera", "Som lärare är jag förmodligen den som kan ämnet
+allra bäst i klassen", "Vissa saker måste man nöta in", "Man måste inte kunna något utantill när det
+finns böcker", "Man blir bra på det man tycker om att göra", "Ämnet är viktigare än pedagogiken i
+undervisningen".
+Vart och ett av ovanstående påståenden skulle kunna diskuteras mycket länge, men det viktigaste är
+att man själv börjar bilda sig en uppfattning om vad man själv står för. Din egen attityd till undervisning
+kommer helt att forma den undervisning du bedriver. Även om du inte har valt en pedagogisk grundsyn
+så har du alltid haft den i ditt undermedvetna och den har format den undervisning du hittills har
+bedrivit. Istället för att undervisningen bara blir en happening så kan du genom att fundera i dessa
+banor ligga steget före och själv välja väg på ett systematiskt sätt.
+
+8.2 Pedagogisk meritportfölj
+Efter att ha "valt" en pedagogisk grundsyn så kan man börja dokumentera sitt pedagogiska arbete och
+på så sätt skapa en pedagogisk meritportfölj. Portföljen kan innehålla rent kvantitativa uppgifter som
+vilka kurser man har hållit, pedagogiska kurser man har gått och andra pedagogiska uppgifter man har
+haft genom åren på högskolan. Viktigare är dock den kvalitativa delen där man beskriver vilka pedagogiska
+idéersom har legat till grund för den undervisning man har bedrivit och vilka resultat man med
+dessa har uppnått. Resultaten kan t.ex. presenteras med egna reflektioner, i form av genomströmning
+av kurser, kursutvärderingar, utbyten och samarbeten med andra kollegor, och resultat på efterföljande
+kurser. Mälardalens högskolan håller kurser av workshopkarraktär i hur man gör pedagogiska meritportföljer
+för intresserade lärare. Portföljen är dels ett verktyg som kan användas för att utveckla sin
+egen profession, men även användas i samband med individuella utvecklingsamtal, lönesamtal, vid arbetssökan
+vid annat lärosäte eller vid en befordran. Dessutom finns det rektorsbeslut från 2003 att alla
+"lärare skall visa dokumenterad pedagogisk skicklighet . . . i en pedagogisk meritportfölj". Beslutet har
+kompletterats med en "mall" och handledning som beskriver vilka delar som kan, bör och ska ingå i
+meritportföljen.
