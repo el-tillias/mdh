@@ -11,35 +11,35 @@ int main()
     int line_counter = 1, i=0, x, found_line[1000];
     FILE *fp;
 
-    printf("File to search: ");
-    scanf("%s", file_name);
+    while (1) {
+        printf("File to search: ");
+        scanf("%s", file_name);
+
+        fp = fopen(file_name,"r");
+        if (fp == NULL) {
+            perror("Error while opening the file. Check the filename again.\n");
+        }
+        else {
+            break;
+        }
+    }
     
     while (1) {
 
-        while (1) {
 
-            if (strcmp(file_name, "#q") == 0) {
-                printf("Exiting.\n");
-                return 0;
-            }
-
-            printf("Word to search for: ");
-            scanf("%s", word);
-
-            if (strcmp(word, "#q") == 0) {
-                printf("Exiting.\n");
-                return 0;
-            }
-
-            fp = fopen(file_name,"r");
-        
-            if (fp == NULL) {
-                perror("Error while opening the file. Check the filename again.\n");
-            }
-            else {
-                break;
-            }
+        if (strcmp(file_name, "#q") == 0) {
+            printf("Exiting.\n");
+            return 0;
         }
+
+        printf("Word to search for: ");
+        scanf("%s", word);
+
+        if (strcmp(word, "#q") == 0) {
+            printf("Exiting.\n");
+            return 0;
+        }
+
 
         while(fgets(temp, 1000, fp) != NULL) {
             if((strstr(temp, word)) != NULL) {
