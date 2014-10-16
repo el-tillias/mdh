@@ -63,13 +63,13 @@ void r_numberof(struct buylist *no, int items) {
     }
 }
 
-void print_shoppinglist(struct buylist *p) {
+void print_shoppinglist(struct buylist *p, int items) {
 
     int i;
     // this prints the first char in struct->name and everything in struct->unit.
     // should only print struct->name, and all of it!
     printf("Product    Amount        Unit\n");
-    for(i=0; i < 5; i++){
+    for(i=0; i <=items; i++){
         printf("%s       %f       %s\n", (p+i)->name, (p+i)->numberof, (p+i)->unit);
     }
 }
@@ -94,20 +94,45 @@ void r_name(struct buylist *n, int items) {
     
 }
 
+void print_options(char *option) {
+
+    printf("[E] Enter a new product, [P] Print the shopping list, [Q] for quit: ");
+    scanf("%s", option);
+}
+
 
 int main(void) {
 
     int items=0;
     struct buylist *n;
+    char option[2];
     n = (struct buylist *) malloc(sizeof(struct buylist));
 
     while (1) {
 
-        n = (struct buylist *) realloc(buylist, (items+1) * sizeof(struct buylist));
+        n = (struct buylist *) realloc(n, (items+1) * sizeof(struct buylist));
 
         r_name(n, items);
         r_unit(n, items);
         r_numberof(n, items);
+
+        while (1) {
+            print_options(option);
+
+            if (*option == 'E') {
+                break;
+            }
+            else if (*option == 'P') {
+                print_shoppinglist(n, items);
+            }
+            else if (*option == 'Q') {
+                return 0;
+            }
+            else {
+                print_options(option);
+            }
+        }
+
         printf("Next item in shopping list..\n");
         items++;
     }
