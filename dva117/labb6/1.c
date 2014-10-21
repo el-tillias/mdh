@@ -69,8 +69,9 @@ void print_shoppinglist(struct buylist *p, int items) {
     // this prints the first char in struct->name and everything in struct->unit.
     // should only print struct->name, and all of it!
     printf("Product    Amount        Unit\n");
+    printf("-----------------------------\n");
     for(i=0; i <=items; i++){
-        printf("%s       %f       %s\n", (p+i)->name, (p+i)->numberof, (p+i)->unit);
+        printf("%-10s%3g%15s\n", (p+i)->name, (p+i)->numberof, (p+i)->unit);
     }
 }
 
@@ -96,8 +97,8 @@ void r_name(struct buylist *n, int items) {
 
 void print_options(char *option) {
 
-    printf("[E] Enter a new product, [P] Print the shopping list, [Q] for quit: ");
-    scanf("%s", option);
+    printf("[e] Enter a new product, [p] Print the shopping list, [q] for quit: ");
+    scanf(" %c", option);
 }
 
 
@@ -119,13 +120,13 @@ int main(void) {
         while (1) {
             print_options(option);
 
-            if (*option == 'E') {
+            if (*option == 'e') {
                 break;
             }
-            else if (*option == 'P') {
+            else if (*option == 'p') {
                 print_shoppinglist(n, items);
             }
-            else if (*option == 'Q') {
+            else if (*option == 'q') {
                 return 0;
             }
             else {

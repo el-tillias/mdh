@@ -7,7 +7,7 @@
  
 int main()
 {
-    char file_name[25], word[25], temp[1000];
+    char file_name[25], word[100], temp[1000];
     int line_counter = 1, i=0, x, found_line[1000];
     FILE *fp;
 
@@ -61,6 +61,7 @@ int main()
         line_counter = 1;
         i=0;
         printf("\n");
+        rewind(fp);
     }
 
     fclose(fp);
