@@ -35,12 +35,16 @@ int main(void) {
             read(comm_fd,incoming_request,1000);
             parse_http_req(&h, incoming_request);
 
-            printf("method: %s\n", h.method);
+            //printf("method: %s\n", h.method);
             // remove leading "/". filepath can be empty. In that case default to index.html
-            printf("filepath: %s\n", h.fullfilepath+1);
-            printf("http_ver: %s\n", h.http_ver);
+            //printf("filepath: %s\n", h.fullfilepath+1);
+            //printf("http_ver: %s\n", h.http_ver);
 
             write(comm_fd, response_ok(), strlen(response_ok()));
+            write(comm_fd, "OK", strlen("OK"));
+            close(comm_fd);
+            bzero(incoming_request,1000);
+
         }
     }
 
