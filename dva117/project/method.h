@@ -42,7 +42,15 @@ int parse_http_req(struct http_req *n, char *http_string) {
 }
 
 
+int validate_method(char *method) {
 
+
+    if (method != "GET" || method != "HEAD" || method != "OPTIONS") {
+        return 20;
+    }
+
+    return 21;
+}
 
 
 
