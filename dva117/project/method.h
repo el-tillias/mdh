@@ -1,8 +1,6 @@
 struct http_req {
     char *ip;
     char *method;
-    char *file;
-    char *path;
     char *fullfilepath;
     char *http_ver;
 };  
@@ -29,9 +27,8 @@ char *skip_character(char **buf, const char *d) {
 
 int parse_http_req(struct http_req *n, char *http_string) {
 
+    int i, pos, x=0;
     int request_length = strlen(http_string);
-
-    printf("http len: %i\n", request_length);
     http_string[request_length+2] = '\0';
 
     while (*http_string != '\0' && isspace(* (unsigned char *) http_string)) {
@@ -41,4 +38,23 @@ int parse_http_req(struct http_req *n, char *http_string) {
     n->method = skip_character(&http_string, " ");
     n->fullfilepath = skip_character(&http_string, " ");
     n->http_ver = skip_character(&http_string, "\r\n");
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

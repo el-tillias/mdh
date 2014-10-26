@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "method.h"
+#include "response.h"
 
 
 int main(void) {
@@ -35,8 +36,11 @@ int main(void) {
             parse_http_req(&h, incoming_request);
 
             printf("method: %s\n", h.method);
-            printf("filepath: %s\n", h.fullfilepath);
+            // remove leading "/". filepath can be empty. In that case default to index.html
+            printf("filepath: %s\n", h.fullfilepath+1);
             printf("http_ver: %s\n", h.http_ver);
+
+            write(comm_fd, response_ok(), strlen(response_ok()));
         }
     }
 
