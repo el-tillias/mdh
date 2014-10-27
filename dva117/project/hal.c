@@ -29,7 +29,7 @@ int main(void) {
 
         comm_fd = accept(listen_fd, (struct sockaddr*) NULL, NULL);
         int method_response, string_response;
-        char response[60] = "Error: 400, reason: ";
+        char err_response[60] = "<strong> HTTP Error 400 - ";
         char *temp;
 
         while (1) {
@@ -42,12 +42,12 @@ int main(void) {
 
             if (method_response == 0) {
                 temp = non_valid_method();
-                strcat(response, temp); 
+                strcat(err_response, temp); 
             }
 
             if (string_response == 0) {
                 temp = directory_traversal();
-                strcat(response, temp);
+                strcat(err_response, temp);
             }
 
             if (string_response == 1 && method_response == 1) {
@@ -56,10 +56,10 @@ int main(void) {
             }
 
             else {
-                temp = end();
-                strcat(response, temp);
+                temp = end_err();
+                strcat(err_response, temp);
                 write(comm_fd, response_ok(), strlen(response_ok()));
-                write(comm_fd, response, strlen(response));
+                write(comm_fd, err_response, strlen(err_response));
             }
 
             close(comm_fd);
