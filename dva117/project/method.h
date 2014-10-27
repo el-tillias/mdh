@@ -44,12 +44,15 @@ int parse_http_req(struct http_req *n, char *http_string) {
 
 int validate_method(char *method) {
 
+    int response=21;
 
-    if (method != "GET" || method != "HEAD" || method != "OPTIONS") {
-        return 20;
+    if ((strncmp(method, "GET", 20) == 0) ||
+        (strncmp(method, "HEAD", 20) == 0) ||
+        (strncmp(method, "OPTIONS", 20)) == 0) {
+            response=20;
     }
-
-    return 21;
+    
+    return response;
 }
 
 

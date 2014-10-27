@@ -28,15 +28,16 @@ int main(void) {
     while(1) {
 
         comm_fd = accept(listen_fd, (struct sockaddr*) NULL, NULL);
+        int val_response;
 
         while (1) {
 
             bzero(incoming_request, 1000);
             read(comm_fd,incoming_request,1000);
             parse_http_req(&h, incoming_request);
-            int val_response = validate_method(h.method);
+            val_response = validate_method(h.method);
 
-            if (val_response == 20) {
+            if (val_response == 21) {
                 write(comm_fd, response_ok(), strlen(response_ok()));
                 write(comm_fd, non_valid_method(), strlen(non_valid_method()));
                 close(comm_fd);
@@ -44,7 +45,7 @@ int main(void) {
                 break;
             }
 
-            else if (val_response == 21) {
+            else if (val_response == 20) {
 
                 //printf("method: %s\n", h.method);
                 // remove leading "/". filepath can be empty. In that case default to index.html
