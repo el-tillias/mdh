@@ -4,8 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "request.h"
-#include "response.h"
+#include "hal.h"
+#include "request.c"
+#include "response.c"
 
 
 int main(void) {
@@ -24,41 +25,46 @@ int main(void) {
     listen(listen_fd, 10);
 
 
-
     while(1) {
 
         comm_fd = accept(listen_fd, (struct sockaddr*) NULL, NULL);
-        int val_response;
+        int method_response, string_response;
+        char response[60] = "Error: 400, reason: ";
+        char *temp;
 
         while (1) {
 
             bzero(incoming_request, 1000);
             read(comm_fd,incoming_request,1000);
             parse_http_req(&h, incoming_request);
-            val_response = validate_method(h.method);
-            validate_reqstring(h.fullfilepath);
+            method_response = validate_method(h.method);
+            string_response = validate_reqstring(h.fullfilepath);
 
-            if (val_response == 21) {
-                write(comm_fd, response_ok(), strlen(response_ok()));
-                write(comm_fd, non_valid_method(), strlen(non_valid_method()));
-                close(comm_fd);
-                bzero(incoming_request,1000);
-                break;
+            if (method_response == 0) {
+                temp = non_valid_method();
+                strcat(response, temp); 
             }
 
-            else if (val_response == 20) {
+            if (string_response == 0) {
+                temp = directory_traversal();
+                strcat(response, temp);
+            }
 
-                //printf("method: %s\n", h.method);
-                // remove leading "/". filepath can be empty. In that case default to index.html
-                //printf("filepath: %s\n", h.fullfilepath+1);
-                //printf("http_ver: %s\n", h.http_ver);
-
+            if (string_response == 1 && method_response == 1) {
                 write(comm_fd, response_ok(), strlen(response_ok()));
                 write(comm_fd, "OK", strlen("OK"));
-                close(comm_fd);
-                bzero(incoming_request,1000);
-                break;
             }
+
+            else {
+                temp = end();
+                strcat(response, temp);
+                write(comm_fd, response_ok(), strlen(response_ok()));
+                write(comm_fd, response, strlen(response));
+            }
+
+            close(comm_fd);
+            bzero(incoming_request,1000);
+            break;
 
         }
     }
