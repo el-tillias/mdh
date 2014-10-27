@@ -3,5 +3,5 @@ const char *response_ok() {
 }
 
 const char *non_valid_method() {
-    return "Non valid method.\r\n\r\n";
+    return "400 Not valid method.\r\n\r\n";
 }
