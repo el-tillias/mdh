@@ -36,6 +36,7 @@ int main(void) {
             read(comm_fd,incoming_request,1000);
             parse_http_req(&h, incoming_request);
             val_response = validate_method(h.method);
+            validate_reqstring(h.fullfilepath);
 
             if (val_response == 21) {
                 write(comm_fd, response_ok(), strlen(response_ok()));
