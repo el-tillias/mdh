@@ -29,8 +29,6 @@ int parse_http_req(struct http_req *n, char *http_string) {
     c_time = time(NULL);
     c_time_str = ctime(&c_time);
 
-    printf("time: %s\n", c_time_str);
-
     int i, pos, x=0;
     int request_length = strlen(http_string);
     http_string[request_length+2] = '\0';
