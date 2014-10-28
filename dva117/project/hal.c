@@ -38,41 +38,41 @@ int main(void) {
 
 void *request_handler(void *http_socket) {
 
-        int comm_fd = *(int*)http_socket;
-        char incoming_request[100];
-        struct http_req h;
-        int method_response, string_response;
-        char err_response[60] = "<strong> HTTP Error 400 - ";
-        char *temp;
+    int comm_fd = *(int*)http_socket;
+    char incoming_request[100];
+    struct http_req h;
+    int method_response, string_response;
+    char err_response[60] = "<strong> HTTP Error 400 - ";
+    char *temp;
 
-        bzero(incoming_request, 1000);
-        read(comm_fd,incoming_request,1000);
-        parse_http_req(&h, incoming_request);
-        method_response = validate_method(h.method);
-        string_response = validate_reqstring(h.fullfilepath);
+    bzero(incoming_request, 1000);
+    read(comm_fd,incoming_request,1000);
+    parse_http_req(&h, incoming_request);
+    method_response = validate_method(h.method);
+    string_response = validate_reqstring(h.fullfilepath);
 
-        if (method_response == 0) {
-            temp = non_valid_method();
-            strcat(err_response, temp); 
-        }
+    if (method_response == 0) {
+        temp = non_valid_method();
+        strcat(err_response, temp); 
+    }
 
-        if (string_response == 0) {
-            temp = directory_traversal();
-            strcat(err_response, temp);
-        }
+    if (string_response == 0) {
+        temp = directory_traversal();
+        strcat(err_response, temp);
+    }
 
-        if (string_response == 1 && method_response == 1) {
-            write(comm_fd, response_ok(), strlen(response_ok()));
-            write(comm_fd, "OK", strlen("OK"));
-        }
+    if (string_response == 1 && method_response == 1) {
+        write(comm_fd, response_ok(), strlen(response_ok()));
+        write(comm_fd, "OK", strlen("OK"));
+    }
 
-        else {
-            temp = end_err();
-            strcat(err_response, temp);
-            write(comm_fd, response_ok(), strlen(response_ok()));
-            write(comm_fd, err_response, strlen(err_response));
-        }
+    else {
+        temp = end_err();
+        strcat(err_response, temp);
+        write(comm_fd, response_ok(), strlen(response_ok()));
+        write(comm_fd, err_response, strlen(err_response));
+    }
 
-        close(comm_fd);
-        bzero(incoming_request,1000);
+    close(comm_fd);
+    bzero(incoming_request,1000);
 }
