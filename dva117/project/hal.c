@@ -14,17 +14,22 @@
 void *request_handler(void *http_socket) {
 
     int comm_fd = *(int*)http_socket;
-    char incoming_request[100];
+    char incoming_request[1000];
     struct http_req h;
     int method_response, string_response;
-    char err_response[60] = "<strong> HTTP Error 400 - ";
+    char err_response[60];
     char *temp;
 
-    bzero(incoming_request, 100);
-    read(comm_fd,incoming_request,100);
+    bzero(incoming_request, 1000);
+    read(comm_fd,incoming_request,1000);
     parse_http_req(&h, incoming_request);
     method_response = validate_method(h.method);
     string_response = validate_reqstring(h.fullfilepath);
+
+    if (method_response == 0 || string_response == 0) {
+        temp = begin_response();
+        strcat(err_response, temp);
+    }
 
     if (method_response == 0) {
         temp = non_valid_method();
@@ -42,15 +47,16 @@ void *request_handler(void *http_socket) {
     }
 
     else {
-        temp = end_err();
+        temp = end_response();
         strcat(err_response, temp);
         write(comm_fd, response_ok(), strlen(response_ok()));
         write(comm_fd, err_response, strlen(err_response));
     }
 
     close(comm_fd);
-    bzero(incoming_request,100);
+    bzero(incoming_request,1000);
 }
+
 
 int main(void) {
 
@@ -66,7 +72,6 @@ int main(void) {
     bind(listen_fd, (struct sockaddr *) &servaddr, sizeof(servaddr));
     listen(listen_fd, 10);
 
-
     while(1) {
         comm = accept(listen_fd, (struct sockaddr*) NULL, NULL);
         if ( pthread_create( &thread_id , NULL ,  request_handler , (void*) &comm) < 0) {
@@ -77,4 +82,3 @@ int main(void) {
     return 0;
    
 }
-

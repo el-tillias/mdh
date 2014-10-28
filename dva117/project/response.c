@@ -14,6 +14,10 @@ char *directory_traversal() {
     return "Directory traversal detected. ";
 }
 
-char *end_err() {
+char *end_response() {
     return "</strong>\r\n\r\n";
+}
+
+char *begin_response() {
+    return "<strong> HTTP Error 400 - ";
 }
