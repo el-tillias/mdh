@@ -11,7 +11,7 @@ char *non_valid_method() {
 }
 
 char *directory_traversal() {
-    return "Directory traversial detected. ";
+    return "Directory traversal detected. ";
 }
 
 char *end_err() {
