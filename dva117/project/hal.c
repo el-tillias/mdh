@@ -9,31 +9,6 @@
 #include "request.c"
 #include "response.c"
 
-void *request_handler(void *);
-
-int main(void) {
-
-    int comm_fd, listen_fd;
-    struct sockaddr_in servaddr;
-    pthread_t thread_id;
-
-    listen_fd = socket(AF_INET, SOCK_STREAM, 0); 
-    bzero( &servaddr, sizeof(servaddr));
-    servaddr.sin_family = AF_INET;
-    servaddr.sin_addr.s_addr = htons(INADDR_ANY);
-    servaddr.sin_port = htons(1400);
-    bind(listen_fd, (struct sockaddr *) &servaddr, sizeof(servaddr));
-    listen(listen_fd, 10);
-
-
-    while(1) {
-        comm_fd = accept(listen_fd, (struct sockaddr*) NULL, NULL);
-        if ( pthread_create( &thread_id , NULL ,  request_handler , (void*) &comm_fd) < 0) {
-            printf("Could not create thread.\n");
-        }
-        close(comm_fd);
-    }
-}
 
 
 void *request_handler(void *http_socket) {
@@ -45,8 +20,8 @@ void *request_handler(void *http_socket) {
     char err_response[60] = "<strong> HTTP Error 400 - ";
     char *temp;
 
-    bzero(incoming_request, 1000);
-    read(comm_fd,incoming_request,1000);
+    bzero(incoming_request, 100);
+    read(comm_fd,incoming_request,100);
     parse_http_req(&h, incoming_request);
     method_response = validate_method(h.method);
     string_response = validate_reqstring(h.fullfilepath);
@@ -74,5 +49,32 @@ void *request_handler(void *http_socket) {
     }
 
     close(comm_fd);
-    bzero(incoming_request,1000);
+    bzero(incoming_request,100);
 }
+
+int main(void) {
+
+    int comm, listen_fd;
+    struct sockaddr_in servaddr;
+    pthread_t thread_id;
+
+    listen_fd = socket(AF_INET, SOCK_STREAM, 0); 
+    bzero( &servaddr, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_addr.s_addr = htons(INADDR_ANY);
+    servaddr.sin_port = htons(1400);
+    bind(listen_fd, (struct sockaddr *) &servaddr, sizeof(servaddr));
+    listen(listen_fd, 10);
+
+
+    while(1) {
+        comm = accept(listen_fd, (struct sockaddr*) NULL, NULL);
+        if ( pthread_create( &thread_id , NULL ,  request_handler , (void*) &comm) < 0) {
+            printf("Could not create thread.\n");
+        }
+    }
+    
+    return 0;
+   
+}
+
